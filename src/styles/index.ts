@@ -42,5 +42,66 @@ export const {
     fonts: {
       inter: 'Inter, sans-serif',
     },
+
+    radii: {
+      rounded: '4px',
+      'rounded-md': '6px',
+      'rounded-lg': '8px',
+      'rounded-full': '9999px',
+    },
+  },
+
+  utils: {
+    // margin
+
+    m: (value: string) => ({
+      margin: value,
+    }),
+    mt: (value: string) => ({
+      marginTop: value,
+    }),
+    mr: (value: string) => ({
+      marginRight: value,
+    }),
+    ml: (value: string) => ({
+      marginLeft: value,
+    }),
+    mx: (value: string) => ({
+      marginLeft: value,
+      marginRight: value
+    }),
+    my: (value: string) => ({
+      marginTop: value,
+      marginBottom: value,
+    }),
+
+    // padding
+
+    p: (value: string) => ({
+      padding: value,
+    }),
+    pt: (value: string) => ({
+      paddingTop: value,
+    }),
+    pr: (value: string) => ({
+      paddingRight: value,
+    }),
+    pl: (value: string) => ({
+      paddingLeft: value,
+    }),
+    px: (value: string) => ({
+      paddingLeft: value,
+      paddingRight: value
+    }),
+    py: (value: string) => ({
+      paddingTop: value,
+      paddingBottom: value,
+    }),
+
+    // border-radius
+
+    br: (value: string) => ({
+      borderRadius: value
+    }),
   }
 })
