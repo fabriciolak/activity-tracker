@@ -60,6 +60,9 @@ export const {
     mt: (value: string) => ({
       marginTop: value,
     }),
+    mb: (value: string) => ({
+      marginBottom: value,
+    }),
     mr: (value: string) => ({
       marginRight: value,
     }),
@@ -83,6 +86,9 @@ export const {
     pt: (value: string) => ({
       paddingTop: value,
     }),
+    pb: (value: string) => ({
+      paddingBottom: value,
+    }),
     pr: (value: string) => ({
       paddingRight: value,
     }),
@@ -103,5 +109,12 @@ export const {
     br: (value: string) => ({
       borderRadius: value
     }),
+
+    // Sizes
+
+    size: (value: string) => ({
+      width: value,
+      height: value,
+    })
   }
 })
