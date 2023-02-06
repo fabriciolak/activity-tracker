@@ -54,15 +54,17 @@ export const ActivityButton = styled('button', {
   border: 'none',
   outline: 'none',
 
+  cursor: 'pointer',
+
   variants: {
     type: {
-      new: {
+      started: {
         backgroundColor: '$green'
       },
-      pause: {
+      paused: {
         backgroundColor: '$yellow'
       },
-      stop: {
+      ended: {
         backgroundColor: '$red'
       },
     }
