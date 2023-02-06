@@ -11,7 +11,6 @@ export const Container = styled('div', {
   gap: '8px',
 
   p: '12px',
-  border: '1px solid'
 })
 
 export const ActivityTitle = styled('div', {

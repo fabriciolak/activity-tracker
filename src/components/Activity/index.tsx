@@ -1,20 +1,22 @@
+import { ActivityProps } from '@/types/activity'
 import { ActivityInfo, ActivityTitle, Container } from "./styles";
 
-interface ActivityProps {
-  title?: string
-}
-
-export function Activity({ title }: ActivityProps) {
+export function Activity({
+  title,
+  startedDate,
+  startedTime,
+  endTime
+}: ActivityProps) {
   return (
     <Container>
       <ActivityTitle>
-        <strong>Making things</strong>
+        <strong>{title}</strong>
         <span>00:00</span>
       </ActivityTitle>
       
       <ActivityInfo>
-        <span>Friday, Fab 3</span>
-        <span>9:00 PM - 10:00 PM</span>
+        <span>{startedDate}</span>
+        <span>{startedTime} - {endTime}</span>
       </ActivityInfo>
     </Container>
   )
