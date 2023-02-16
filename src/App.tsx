@@ -1,7 +1,9 @@
-import { Activity } from "@/components/Activity";
+import { Activity } from "./components/Activity";
 
 export function App() {
   return (
-    <Activity />
+    <div>
+      <Activity />
+    </div>
   )
 }
