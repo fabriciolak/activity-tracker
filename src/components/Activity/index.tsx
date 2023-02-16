@@ -1,23 +1,9 @@
-import { ActivityProps } from '@/types/activity'
-import { ActivityInfo, ActivityTitle, Container } from "./styles";
+import { Container } from "./styles";
 
-export function Activity({
-  title,
-  startedDate,
-  startedTime,
-  endTime
-}: ActivityProps) {
+export function Activity() {
   return (
     <Container>
-      <ActivityTitle>
-        <strong>{title}</strong>
-        <span>00:00</span>
-      </ActivityTitle>
-      
-      <ActivityInfo>
-        <span>{startedDate}</span>
-        <span>{startedTime} - {endTime}</span>
-      </ActivityInfo>
+      Oi
     </Container>
   )
 }
