@@ -54,65 +54,65 @@ export const {
   utils: {
     // margin
 
-    m: (value: string) => ({
+    m: (value: string | number) => ({
       margin: value,
     }),
-    mt: (value: string) => ({
+    mt: (value: string | number) => ({
       marginTop: value,
     }),
-    mb: (value: string) => ({
+    mb: (value: string | number) => ({
       marginBottom: value,
     }),
-    mr: (value: string) => ({
+    mr: (value: string | number) => ({
       marginRight: value,
     }),
-    ml: (value: string) => ({
+    ml: (value: string | number) => ({
       marginLeft: value,
     }),
-    mx: (value: string) => ({
+    mx: (value: string | number) => ({
       marginLeft: value,
       marginRight: value
     }),
-    my: (value: string) => ({
+    my: (value: string | number) => ({
       marginTop: value,
       marginBottom: value,
     }),
 
     // padding
 
-    p: (value: string) => ({
+    p: (value: string | number) => ({
       padding: value,
     }),
-    pt: (value: string) => ({
+    pt: (value: string | number) => ({
       paddingTop: value,
     }),
-    pb: (value: string) => ({
+    pb: (value: string | number) => ({
       paddingBottom: value,
     }),
-    pr: (value: string) => ({
+    pr: (value: string | number) => ({
       paddingRight: value,
     }),
-    pl: (value: string) => ({
+    pl: (value: string | number) => ({
       paddingLeft: value,
     }),
-    px: (value: string) => ({
+    px: (value: string | number) => ({
       paddingLeft: value,
       paddingRight: value
     }),
-    py: (value: string) => ({
+    py: (value: string | number) => ({
       paddingTop: value,
       paddingBottom: value,
     }),
 
     // border-radius
 
-    br: (value: string) => ({
+    br: (value: string | number) => ({
       borderRadius: value
     }),
 
     // Sizes
 
-    size: (value: string) => ({
+    size: (value: string | number) => ({
       width: value,
       height: value,
     })
