@@ -1,9 +1,23 @@
-import { Container } from "./styles";
+import { Container, Header, Footer } from "./styles";
 
-export function Activity() {
+interface ActivityProps {
+  title: string
+  uptime: string
+  date: string
+  startEndDate: string
+}
+
+export function Activity({ title, uptime, date, startEndDate }: ActivityProps) {
   return (
     <Container>
-      Oi
+      <Header>
+        <span>{title}</span>
+        <strong>{uptime}</strong>
+      </Header>
+      <Footer>
+        <span>{date}</span>
+        <span>{startEndDate}</span>
+      </Footer>
     </Container>
   )
 }
