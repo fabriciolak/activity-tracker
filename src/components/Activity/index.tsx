@@ -4,10 +4,11 @@ interface ActivityProps {
   title: string
   uptime: string
   date: string
-  startEndDate: string
+  startDate: string
+  endDate: string
 }
 
-export function Activity({ title, uptime, date, startEndDate }: ActivityProps) {
+export function Activity({ title, uptime, date, startDate, endDate }: ActivityProps) {
   return (
     <Container>
       <Header>
@@ -16,7 +17,7 @@ export function Activity({ title, uptime, date, startEndDate }: ActivityProps) {
       </Header>
       <Footer>
         <span>{date}</span>
-        <span>{startEndDate}</span>
+        <span>{startDate} - {endDate}</span>
       </Footer>
     </Container>
   )
