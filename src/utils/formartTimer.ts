@@ -1,6 +1,8 @@
 export function formatSeconds(seconds: number): string {
-  const minutes = (Math.abs(seconds / 60)).toFixed(2)
+  const minutes = Math.floor(Math.abs(seconds / 60))
+  const secondsLeft = Math.abs(seconds % 60)
 
   const formattedMinutes = String(minutes).padStart(2, '0')
-  return `${formattedMinutes}`
+  const formattedSeconds = String(secondsLeft).padStart(2, '0')
+  return `${formattedMinutes}:${formattedSeconds}`
 }
