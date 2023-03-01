@@ -49,7 +49,14 @@ export function CreateActivity() {
       )}
 
       {tracker.map((item) => (
-        <Activity key={item.id} title={item.title} uptime='00:90' date={item.date} startEndDate={item.startEndDate} />
+        <Activity 
+          key={item.id}
+          title={item.title}
+          uptime={item.uptime}
+          date={item.date}
+          startDate={item.startDate}
+          endDate={item.endDate}
+        />
       ))}
     </>
   )
