@@ -7,7 +7,9 @@ interface TrackerProps {
   id: string
   title: string
   date: string
-  startEndDate: string
+  uptime: string
+  startDate: string
+  endDate: string
 }
 
 interface UseActivityTrackerProps {
@@ -28,30 +30,64 @@ export function useActivityTracker(): UseActivityTrackerProps {
   const [isActivityStarted, setIsActivityStarted] = useState<boolean>(true)
   const [tracker, setTracker] = useState<TrackerProps[]>([])
   const [uptime, setUptime] = useState<string>('00:00')
+  const [startTime, setStartTime] = useState<dayjs.Dayjs | null>(null)
+  const [currentActivityId, setCurrentActivityId] = useState<string>('')
+
 
   function createActivity() {
     if (inputText.length === 0) return alert(`bota um nome`)
 
-    const today = new Date()
+    const today = dayjs()
 
-    setTracker((prev) => 
-    [...prev, { 
+    setTracker((prev) => {
+      // const prevActivity = prev.find(activity => activity.id === currentActivityId)
+
+      // if (prevActivity) {
+      //   const prevActivityIndex = prev.indexOf(prevActivity)
+      //   const updatedPrevActivity = {
+      //     ...prevActivity,
+      //     uptime: '00:00'
+      //   }
+      //   prev[prevActivityIndex] = updatedPrevActivity
+      // }
+
+      const newActivity: TrackerProps = { 
         id: crypto.randomUUID(), 
         title: inputText, 
         date: dayjs(today).format('dddd[, ]MMM[ ]D'),
-        startEndDate: dayjs(today).format(`HH:mm A`)
+        startDate: dayjs(today).format(`HH:mm A`),
+        endDate: '',
+        uptime,
       }
-    ])
 
-    setIsActivityStarted((prev) => !prev)
+      setStartTime(today)
+      setCurrentActivityId(newActivity.id)
+      setIsActivityStarted(prev => !prev)
+      return [...prev, newActivity]
+    })
   }
 
-  // const endTime = new Date()
-  // const timeDiffBetween = dayjs(startTime).diff(endTime)
-  // const durationTimer = dayjs.duration(timeDiffBetween).asSeconds()
-
   function stopActivity() {
-    setInputText("")
+
+    setTracker((prev) => {
+      const prevActivity = prev.find(activity => activity.id === currentActivityId)
+
+      if (prevActivity) {
+        const prevActivityIndex = prev.indexOf(prevActivity)
+        const updatedPrevActivity: TrackerProps = {
+          ...prevActivity,
+          uptime,
+          endDate: dayjs(dayjs()).format(`HH:mm A`)
+        }
+        prev[prevActivityIndex] = updatedPrevActivity
+      }
+
+      setCurrentActivityId('')
+      setInputText('')
+      setUptime('00:00')
+      setIsActivityStarted(prev => !prev)
+      return prev
+    })
   }
 
   function pauseActivity() {
@@ -61,6 +97,30 @@ export function useActivityTracker(): UseActivityTrackerProps {
   function handleActivityName(e: ChangeEvent<HTMLInputElement>) {
     setInputText(e.target.value)
   }
+
+  function calculateDiff(startTime: dayjs.Dayjs) {
+    const diff = startTime?.diff(dayjs(), 'second')
+
+    return formatSeconds(diff)
+  }
+
+  useEffect(() => {
+    let intervalId: number
+    
+    if (!isActivityStarted) {
+      
+      intervalId = setInterval(() => {
+        setUptime(calculateDiff(startTime!))
+        // setUptime((prevUptime) => {
+        //   const diff = startTime?.diff(startTime, 'second')
+        //   const newUptime = formatSeconds(diff!)
+        //   return newUptime !== prevUptime ? newUptime : prevUptime
+        // })
+      }, 1000)
+    }
+
+    return () => clearInterval(intervalId)
+  }, [isActivityStarted, startTime])
 
   return {
     createActivity,
